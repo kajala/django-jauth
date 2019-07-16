@@ -3,6 +3,8 @@ import hashlib
 import hmac
 import json
 import logging
+from urllib.parse import urlencode
+
 import requests
 from django.conf import settings
 from requests import Response
@@ -116,3 +118,44 @@ def google_me(access_token: str) -> Response:
     url = settings.GOOGLE_API_URL + '/oauth2/v1/userinfo?alt=json&access_token={}'.format(access_token)
     res = http_request('get', url)
     return res
+
+
+def google_login_url(state: str, scope: str = 'email profile', api_url: str = 'https://accounts.google.com/o/oauth2/v2/auth', **kw) -> str:
+    return api_url + '?' + urlencode({
+        'client_id': settings.GOOGLE_APP_ID,
+        'redirect_uri': settings.GOOGLE_REDIRECT_URL,
+        'state': state,
+        'scope': scope,
+        'response_type': 'code',
+        **kw,
+    })
+
+
+def facebook_login_url(state: str, api_url: str = 'https://www.facebook.com/v3.3/dialog/oauth', **kw) -> str:
+    return api_url + '?' + urlencode({
+        'client_id': settings.FACEBOOK_APP_ID,
+        'redirect_uri': settings.FACEBOOK_REDIRECT_URL,
+        'state': state,
+        **kw,
+    })
+
+
+def account_kit_sms_login_url(state: str, api_url: str = 'https://www.accountkit.com/v1.0/basic/dialog/sms_login/', **kw) -> str:
+    return api_url + '?' + urlencode({
+        'app_id': settings.ACCOUNT_KIT_APP_ID,
+        'redirect': settings.ACCOUNT_KIT_REDIRECT_URL,
+        'state': state,
+        'fbAppEventsEnabled': 'true',
+        **kw,
+    })
+
+
+def oauth2_login_urls(state: str, **kw) -> dict:
+    data = {}
+    if hasattr(settings, 'ACCOUNT_KIT_APP_ID') and settings.ACCOUNT_KIT_APP_ID:
+        data['account_kit_sms_login_url'] = account_kit_sms_login_url(state, **kw)
+    if hasattr(settings, 'FACEBOOK_APP_ID') and settings.FACEBOOK_APP_ID:
+        data['facebook_login_url'] = facebook_login_url(state, **kw)
+    if hasattr(settings, 'GOOGLE_APP_ID') and settings.GOOGLE_APP_ID:
+        data['google_login_url'] = google_login_url(state, **kw)
+    return data
