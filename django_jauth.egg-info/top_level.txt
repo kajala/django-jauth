@@ -1,2 +1,0 @@
-jauth
-jauth_example

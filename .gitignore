@@ -4,5 +4,6 @@ __pycache__
 /project/settings.py
 /venv
 /dist
+/django_jauth.egg-info
 
 
