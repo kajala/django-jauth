@@ -20,12 +20,15 @@ class GoogleAdmin(JauthAdminBase):
     exclude = ()
 
 
-admin.site.register(AccountKitUser, AccountKitAdmin)
-admin.site.register(AccountKitAccessToken, AccountKitAdmin)
-admin.site.register(FacebookUser, FacebookAdmin)
-admin.site.register(FacebookAccessToken, FacebookAdmin)
-admin.site.register(GoogleUser, GoogleAdmin)
-admin.site.register(GoogleAccessToken, GoogleAdmin)
+if hasattr(settings, 'ACCOUNT_KIT_APP_ID') and settings.ACCOUNT_KIT_APP_ID:
+    admin.site.register(AccountKitUser, AccountKitAdmin)
+    admin.site.register(AccountKitAccessToken, AccountKitAdmin)
+if hasattr(settings, 'FACEBOOK_APP_ID') and settings.FACEBOOK_APP_ID:
+    admin.site.register(FacebookUser, FacebookAdmin)
+    admin.site.register(FacebookAccessToken, FacebookAdmin)
+if hasattr(settings, 'GOOGLE_APP_ID') and settings.GOOGLE_APP_ID:
+    admin.site.register(GoogleUser, GoogleAdmin)
+    admin.site.register(GoogleAccessToken, GoogleAdmin)
 
 required_params = ['JAUTH_AUTHENTICATION_ERROR_REDIRECT', 'JAUTH_AUTHENTICATION_SUCCESS_REDIRECT']
 for p in required_params:
