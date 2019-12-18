@@ -2,11 +2,13 @@ from django.conf import settings
 from django.contrib.auth.models import User
 from django.contrib.postgres.fields import JSONField
 from django.db import models
+from django.utils.timezone import now
 
 
 class OAuthUser(models.Model):
+    created = models.DateTimeField(_('created'), default=now, blank=True, db_index=True, editable=False)
     user = models.ForeignKey(User, on_delete=models.CASCADE, null=True, default=None, blank=True)
-    ext_user_id = models.CharField(unique=True, db_index=True, max_length=32)
+    ext_user_id = models.CharField(db_index=True, max_length=32)
     me = JSONField(blank=True, default=dict)
 
     class Meta:

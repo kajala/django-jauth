@@ -1,5 +1,4 @@
 from datetime import timedelta
-from django.contrib.auth import authenticate
 from django.contrib.auth.models import User
 from django.db import transaction
 from django.utils.timezone import now
@@ -17,7 +16,7 @@ from .models import GoogleUser, GoogleAccessToken
 class AuthResultSerializer(serializers.Serializer):
     def to_representation(self, instance: User):
         assert isinstance(instance, User)
-        token, created = Token.objects.get_or_create(user=instance)
+        token = Token.objects.get_or_create(user=instance)[0]
         return {
             'token': token.key,
             'user': {'id': instance.id, 'username': instance.username, 'email': instance.email},

@@ -1,6 +1,6 @@
 from django.conf import settings
 from django.contrib import admin
-from .models import AccountKitUser, AccountKitAccessToken, FacebookAccessToken, FacebookUser, GoogleUser, \
+from jauth.models import AccountKitUser, AccountKitAccessToken, FacebookAccessToken, FacebookUser, GoogleUser, \
     GoogleAccessToken
 
 

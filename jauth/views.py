@@ -3,7 +3,6 @@ import logging
 from urllib.parse import urlencode
 from django.conf import settings
 from django.contrib import auth
-from django.contrib.auth.models import User
 from django.http import HttpResponse, HttpRequest
 from django.shortcuts import redirect
 from django.views.generic import TemplateView
@@ -37,7 +36,7 @@ class OAuthRedirectViewBase(TemplateView):
 
         data = request.GET.dict()
         if 'code' in data:
-            serializer = self.serializer_class()
+            serializer = self.serializer_class()  # pylint: disable=not-callable
             data = serializer.validate(data)
             user = data['user']
             cx['user'] = user
@@ -66,7 +65,7 @@ class OAuthRedirectViewBase(TemplateView):
 
 
 class FacebookDeauthorizeView(APIView):
-    def post(self, request: Request, *args, **kwargs):
+    def post(self, request: Request, *args, **kwargs):  # pylint: disable=unused-argument
         logger.info('FacebookDeauthorizeView BEGIN -----------------------')
         logger.info(request.POST.dict())
         signed_request = request.POST.get('signed_request')
@@ -80,7 +79,7 @@ class FacebookDeauthorizeView(APIView):
 
 
 class FacebookDeleteView(APIView):
-    def post(self, request, *args, **kwargs):
+    def post(self, request, *args, **kwargs):  # pylint: disable=unused-argument
         logger.info('FacebookDeleteView BEGIN ----------------------------')
         logger.info(request.POST.dict())
         signed_request = request.POST.get('signed_request')

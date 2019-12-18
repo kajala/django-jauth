@@ -1,3 +1,4 @@
+# pylint: disable=logging-format-interpolation
 import base64
 import hashlib
 import hmac
@@ -55,7 +56,8 @@ def facebook_get_access_token(code: str) -> Response:
     app_id = settings.FACEBOOK_APP_ID
     app_secret = settings.FACEBOOK_APP_SECRET
     redirect_url = settings.FACEBOOK_REDIRECT_URL
-    url = settings.FACEBOOK_API_URL + '/oauth/access_token?client_id={}&redirect_uri={}&client_secret={}&code={}'.format(app_id, redirect_url, app_secret, code)
+    url = settings.FACEBOOK_API_URL + '/oauth/access_token?client_id={}&redirect_uri={}&client_secret={}&code={}'.format(
+        app_id, redirect_url, app_secret, code)
     res = http_request('get', url)
     return res
 

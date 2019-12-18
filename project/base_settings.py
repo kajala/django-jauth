@@ -143,6 +143,3 @@ LOGGING = {
         },
     }
 }
-
-# django-jauth specific
-

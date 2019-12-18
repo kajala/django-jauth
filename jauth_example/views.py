@@ -4,13 +4,12 @@ from django.contrib import auth
 from django.http import HttpRequest
 from django.shortcuts import render, redirect
 from django.urls import reverse
-from django.utils.translation import gettext as _
 from django.views import View
 from django.views.generic import TemplateView
 
 
 class HomeView(View):
-    def get(self, request, *args, **kwargs):
+    def get(self, request, *args, **kwargs):  # pylint: disable=unused-argument
         user = request.user
         if not user.is_authenticated:
             return redirect('jauth-example-login')
@@ -20,7 +19,7 @@ class HomeView(View):
 class LoginView(TemplateView):
     template_name = 'jauth_example/login.html'
 
-    def get_context_data(self, **kw):
+    def get_context_data(self, **kw):  # pylint: disable=unused-argument
         request = self.request
         assert isinstance(request, HttpRequest)
         cx = {
@@ -40,6 +39,6 @@ class LoginView(TemplateView):
 
 
 class LogoutView(View):
-    def get(self, request, *args, **kwargs):
+    def get(self, request, *args, **kwargs):  # pylint: disable=unused-argument
         auth.logout(request)
         return redirect(reverse('jauth-example-login'))
