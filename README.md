@@ -1,9 +1,11 @@
 django-jauth
 ============
 
-Simple OAuth2 authentication client library for Django and Django REST framework projects.
+Simple OAuth2 authentication client library for Django and Django REST framework projects. Django 3.0 support. Unit test coverage 51%.
 
-Features:
+
+Features
+========
 
 * Supports simple integration both to single page apps (via postMessage) and traditional Django apps (via redirect)
 
@@ -11,7 +13,7 @@ Features:
 
 This is by no means comprehensive OAuth2 package but simple and serves single purpose.
 
-# Supported / Tested OAuth2 Providers
+## Supported / Tested OAuth2 Providers
 
 * Facebook
 
@@ -19,11 +21,13 @@ This is by no means comprehensive OAuth2 package but simple and serves single pu
 
 * Google
 
-# Other Features
+## Other Features
 
 * Supports deauthorize and delete Facebook callbacks
  
-# Configuration
+
+Configuration
+=============
 
 settings.JAUTH_AUTHENTICATION_SUCCESS_REDIRECT:
 
@@ -32,3 +36,10 @@ settings.JAUTH_AUTHENTICATION_SUCCESS_REDIRECT:
 settings.JAUTH_AUTHENTICATION_ERROR_REDIRECT:
 
 * Set this as URL of login page with querystring parameter "error" as error message. Can be None for single page apps.
+
+
+Install
+=======
+
+* pip install django-jauth
+
