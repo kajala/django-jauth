@@ -5,5 +5,5 @@ __pycache__
 /venv
 /dist
 /django_jauth.egg-info
-
+/.pytype
 
