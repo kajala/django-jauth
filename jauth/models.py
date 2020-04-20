@@ -78,7 +78,7 @@ class GoogleUser(OAuthUser):
         return self.me.get('email', '') if self.me else ''
 
     @property
-    def verified_email(self) -> str:
+    def verified_email(self) -> bool:
         return self.me.get('verified_email', False) if self.me else False
 
     @property

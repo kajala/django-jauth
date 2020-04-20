@@ -76,7 +76,7 @@ def facebook_parse_signed_request(signed_request: str) -> dict:
     encoded_sig, payload = signed_request.split('.', 2)
     app_secret = settings.FACEBOOK_APP_SECRET
     data = json.loads(base64.b64decode(payload.replace('-_', '+/')))
-    expected_sig = hmac.new(app_secret, msg=payload, digestmod=hashlib.sha256).digest()
+    expected_sig = hmac.new(app_secret, msg=payload.encode(), digestmod=hashlib.sha256).digest()
     if expected_sig != encoded_sig:
         raise ValidationError("Expected signature does not match encoded signature in Facebook request")
     return data

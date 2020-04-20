@@ -1,0 +1,14 @@
+# ninja log v5
+0	695	1587425262742579153	/home/jani/www/kajala/django-jauth/.pytype/pyi/jauth/models.pyi	634c15e1e89cac9a
+0	581	1587425368014791240	/home/jani/www/kajala/django-jauth/.pytype/pyi/jauth/migrations/0001_initial.pyi	dc82ba1d2902712e
+0	424	1587425437190915200	/home/jani/www/kajala/django-jauth/.pytype/pyi/jauth/migrations/__init__.pyi	34dc8f5b7daa5eda
+424	851	1587425437618915933	/home/jani/www/kajala/django-jauth/.pytype/pyi/jauth/__init__.pyi	919338fb51d633d4
+851	3059	1587425439690919476	/home/jani/www/kajala/django-jauth/.pytype/pyi/jauth/helpers.pyi	1a678c92a15b839a
+3059	3500	1587425440266920459	/home/jani/www/kajala/django-jauth/.pytype/pyi/jauth/apps.pyi	4100faabcd796f0e
+3500	5096	1587425441806923084	/home/jani/www/kajala/django-jauth/.pytype/pyi/jauth/serializers.pyi	3d2c6cfe7bc43980
+5096	6422	1587425443178925419	/home/jani/www/kajala/django-jauth/.pytype/pyi/jauth/tests.pyi	7167d28112f11d95
+6422	6871	1587425443638926201	/home/jani/www/kajala/django-jauth/.pytype/pyi/jauth/templates/__init__.pyi	d4bbeb71a8687476
+6871	7393	1587425444154927077	/home/jani/www/kajala/django-jauth/.pytype/pyi/jauth/migrations/0002_auto_20191218_0625.pyi	d7c82d32e43aaacd
+7393	7814	1587425444582927804	/home/jani/www/kajala/django-jauth/.pytype/pyi/jauth/templates/jauth/__init__.pyi	421b368570ad4714
+7814	8332	1587425445090928666	/home/jani/www/kajala/django-jauth/.pytype/pyi/jauth/admin.pyi	e2169c838b83ca04
+8332	9869	1587425446594931214	/home/jani/www/kajala/django-jauth/.pytype/pyi/jauth/views.pyi	ca2045c24a5c188

@@ -1,0 +1,12 @@
+django/contrib/auth/models /home/jani/www/kajala/django-jauth/.pytype/imports/default.pyi
+django/db/transaction /home/jani/www/kajala/django-jauth/.pytype/imports/default.pyi
+django/utils/timezone /home/jani/www/kajala/django-jauth/.pytype/imports/default.pyi
+django/utils/translation/__init__ /home/jani/www/kajala/django-jauth/.pytype/imports/default.pyi
+rest_framework/serializers /home/jani/www/kajala/django-jauth/.pytype/imports/default.pyi
+rest_framework/authtoken/models /home/jani/www/kajala/django-jauth/.pytype/imports/default.pyi
+django/conf/__init__ /home/jani/www/kajala/django-jauth/.pytype/imports/default.pyi
+rest_framework/exceptions /home/jani/www/kajala/django-jauth/.pytype/imports/default.pyi
+jauth/helpers /home/jani/www/kajala/django-jauth/.pytype/pyi/jauth/helpers.pyi
+django/contrib/postgres/fields/__init__ /home/jani/www/kajala/django-jauth/.pytype/imports/default.pyi
+django/db/models/__init__ /home/jani/www/kajala/django-jauth/.pytype/imports/default.pyi
+jauth/models /home/jani/www/kajala/django-jauth/.pytype/pyi/jauth/models.pyi
