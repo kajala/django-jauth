@@ -6,4 +6,5 @@ __pycache__
 /dist
 /django_jauth.egg-info
 /.pytype
+/MANIFEST
 
