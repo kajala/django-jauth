@@ -1,6 +1,5 @@
 # -*- coding: utf-8 -*-
 from distutils.core import setup
-from setuptools import find_packages
 
 
 def parse_requirements(filename, session=False):
@@ -16,7 +15,7 @@ setup(
     version='3.1.1',
     author=u'Jani Kajala',
     author_email='kajala@gmail.com',
-    packages=find_packages(exclude=['project', 'venv', 'jauth_example']),
+    packages=['jauth'],
     include_package_data=True,
     url='https://github.com/kajala/django-jauth',
     license='MIT licence, see LICENCE.txt',

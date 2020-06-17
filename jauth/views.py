@@ -69,6 +69,8 @@ class FacebookDeauthorizeView(APIView):
         logger.info('FacebookDeauthorizeView BEGIN -----------------------')
         logger.info(request.POST.dict())
         signed_request = request.POST.get('signed_request')
+        if not signed_request:
+            return {}
         data = facebook_parse_signed_request(signed_request)
         logger.info('Parsed data:')
         logger.info(data)
@@ -93,12 +95,12 @@ class FacebookDeleteView(APIView):
 
 
 class AccountKitRedirectView(OAuthRedirectViewBase):
-    serializer_class = AccountKitAuthTokenSerializer
+    serializer_class = AccountKitAuthTokenSerializer  # type: ignore
 
 
 class FacebookRedirectView(OAuthRedirectViewBase):
-    serializer_class = FacebookAuthTokenSerializer
+    serializer_class = FacebookAuthTokenSerializer  # type: ignore
 
 
 class GoogleRedirectView(OAuthRedirectViewBase):
-    serializer_class = GoogleAuthTokenSerializer
+    serializer_class = GoogleAuthTokenSerializer  # type: ignore
