@@ -16,75 +16,117 @@ class Migration(migrations.Migration):
 
     operations = [
         migrations.CreateModel(
-            name='GoogleUser',
+            name="GoogleUser",
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('ext_user_id', models.CharField(db_index=True, max_length=32, unique=True)),
-                ('me', django.contrib.postgres.fields.jsonb.JSONField(blank=True, default=dict)),
-                ('user', models.ForeignKey(blank=True, default=None, null=True, on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL)),
+                ("id", models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name="ID")),
+                ("ext_user_id", models.CharField(db_index=True, max_length=32, unique=True)),
+                ("me", django.contrib.postgres.fields.jsonb.JSONField(blank=True, default=dict)),
+                (
+                    "user",
+                    models.ForeignKey(
+                        blank=True,
+                        default=None,
+                        null=True,
+                        on_delete=django.db.models.deletion.CASCADE,
+                        to=settings.AUTH_USER_MODEL,
+                    ),
+                ),
             ],
             options={
-                'abstract': False,
+                "abstract": False,
             },
         ),
         migrations.CreateModel(
-            name='GoogleAccessToken',
+            name="GoogleAccessToken",
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('access_token', models.CharField(max_length=255)),
-                ('expire_time', models.DateTimeField(db_index=True)),
-                ('ext_user', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='+', to='jauth.GoogleUser')),
+                ("id", models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name="ID")),
+                ("access_token", models.CharField(max_length=255)),
+                ("expire_time", models.DateTimeField(db_index=True)),
+                (
+                    "ext_user",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE, related_name="+", to="jauth.GoogleUser"
+                    ),
+                ),
             ],
             options={
-                'abstract': False,
+                "abstract": False,
             },
         ),
         migrations.CreateModel(
-            name='FacebookUser',
+            name="FacebookUser",
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('ext_user_id', models.CharField(db_index=True, max_length=32, unique=True)),
-                ('me', django.contrib.postgres.fields.jsonb.JSONField(blank=True, default=dict)),
-                ('user', models.ForeignKey(blank=True, default=None, null=True, on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL)),
+                ("id", models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name="ID")),
+                ("ext_user_id", models.CharField(db_index=True, max_length=32, unique=True)),
+                ("me", django.contrib.postgres.fields.jsonb.JSONField(blank=True, default=dict)),
+                (
+                    "user",
+                    models.ForeignKey(
+                        blank=True,
+                        default=None,
+                        null=True,
+                        on_delete=django.db.models.deletion.CASCADE,
+                        to=settings.AUTH_USER_MODEL,
+                    ),
+                ),
             ],
             options={
-                'abstract': False,
+                "abstract": False,
             },
         ),
         migrations.CreateModel(
-            name='FacebookAccessToken',
+            name="FacebookAccessToken",
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('access_token', models.CharField(max_length=255)),
-                ('expire_time', models.DateTimeField(db_index=True)),
-                ('ext_user', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='+', to='jauth.FacebookUser')),
+                ("id", models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name="ID")),
+                ("access_token", models.CharField(max_length=255)),
+                ("expire_time", models.DateTimeField(db_index=True)),
+                (
+                    "ext_user",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE, related_name="+", to="jauth.FacebookUser"
+                    ),
+                ),
             ],
             options={
-                'abstract': False,
+                "abstract": False,
             },
         ),
         migrations.CreateModel(
-            name='AccountKitUser',
+            name="AccountKitUser",
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('ext_user_id', models.CharField(db_index=True, max_length=32, unique=True)),
-                ('me', django.contrib.postgres.fields.jsonb.JSONField(blank=True, default=dict)),
-                ('user', models.ForeignKey(blank=True, default=None, null=True, on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL)),
+                ("id", models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name="ID")),
+                ("ext_user_id", models.CharField(db_index=True, max_length=32, unique=True)),
+                ("me", django.contrib.postgres.fields.jsonb.JSONField(blank=True, default=dict)),
+                (
+                    "user",
+                    models.ForeignKey(
+                        blank=True,
+                        default=None,
+                        null=True,
+                        on_delete=django.db.models.deletion.CASCADE,
+                        to=settings.AUTH_USER_MODEL,
+                    ),
+                ),
             ],
             options={
-                'abstract': False,
+                "abstract": False,
             },
         ),
         migrations.CreateModel(
-            name='AccountKitAccessToken',
+            name="AccountKitAccessToken",
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('access_token', models.CharField(max_length=255)),
-                ('expire_time', models.DateTimeField(db_index=True)),
-                ('ext_user', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='+', to='jauth.AccountKitUser')),
+                ("id", models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name="ID")),
+                ("access_token", models.CharField(max_length=255)),
+                ("expire_time", models.DateTimeField(db_index=True)),
+                (
+                    "ext_user",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE, related_name="+", to="jauth.AccountKitUser"
+                    ),
+                ),
             ],
             options={
-                'abstract': False,
+                "abstract": False,
             },
         ),
     ]

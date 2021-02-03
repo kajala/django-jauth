@@ -7,38 +7,44 @@ import django.utils.timezone
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('jauth', '0001_initial'),
+        ("jauth", "0001_initial"),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='accountkituser',
-            name='created',
-            field=models.DateTimeField(blank=True, db_index=True, default=django.utils.timezone.now, editable=False, verbose_name='created'),
+            model_name="accountkituser",
+            name="created",
+            field=models.DateTimeField(
+                blank=True, db_index=True, default=django.utils.timezone.now, editable=False, verbose_name="created"
+            ),
         ),
         migrations.AddField(
-            model_name='facebookuser',
-            name='created',
-            field=models.DateTimeField(blank=True, db_index=True, default=django.utils.timezone.now, editable=False, verbose_name='created'),
+            model_name="facebookuser",
+            name="created",
+            field=models.DateTimeField(
+                blank=True, db_index=True, default=django.utils.timezone.now, editable=False, verbose_name="created"
+            ),
         ),
         migrations.AddField(
-            model_name='googleuser',
-            name='created',
-            field=models.DateTimeField(blank=True, db_index=True, default=django.utils.timezone.now, editable=False, verbose_name='created'),
+            model_name="googleuser",
+            name="created",
+            field=models.DateTimeField(
+                blank=True, db_index=True, default=django.utils.timezone.now, editable=False, verbose_name="created"
+            ),
         ),
         migrations.AlterField(
-            model_name='accountkituser',
-            name='ext_user_id',
+            model_name="accountkituser",
+            name="ext_user_id",
             field=models.CharField(db_index=True, max_length=32),
         ),
         migrations.AlterField(
-            model_name='facebookuser',
-            name='ext_user_id',
+            model_name="facebookuser",
+            name="ext_user_id",
             field=models.CharField(db_index=True, max_length=32),
         ),
         migrations.AlterField(
-            model_name='googleuser',
-            name='ext_user_id',
+            model_name="googleuser",
+            name="ext_user_id",
             field=models.CharField(db_index=True, max_length=32),
         ),
     ]

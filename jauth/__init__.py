@@ -1,1 +1,1 @@
-default_app_config = 'jauth.apps.JauthConfig'
+default_app_config = "jauth.apps.JauthConfig"
