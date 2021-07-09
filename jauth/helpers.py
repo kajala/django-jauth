@@ -17,9 +17,7 @@ logger = logging.getLogger(__name__)
 
 def http_request(method: str, url: str, **kwargs) -> Response:
     res = requests.request(method, url, **kwargs)
-    logger.info(
-        "{} {} -------------------------------------------------------------------- ".format(method.upper(), url)
-    )
+    logger.info("{} {} -------------------------------------------------------------------- ".format(method.upper(), url))
     logger.info("{}".format(res.request.body))  # type: ignore
     logger.info("HTTP {} -------------------------------------------------------------------- ".format(res.status_code))
     logger.info("{}".format(res.text))
@@ -34,10 +32,7 @@ def account_kit_get_access_token(code: str) -> Response:
     """
     app_id = settings.ACCOUNT_KIT_APP_ID
     app_secret = settings.ACCOUNT_KIT_APP_SECRET
-    url = (
-        settings.ACCOUNT_KIT_API_URL
-        + "/access_token?grant_type=authorization_code&code={}&access_token=AA|{}|{}".format(code, app_id, app_secret)
-    )
+    url = settings.ACCOUNT_KIT_API_URL + "/access_token?grant_type=authorization_code&code={}&access_token=AA|{}|{}".format(code, app_id, app_secret)
     res = http_request("get", url)
     return res
 
@@ -61,11 +56,8 @@ def facebook_get_access_token(code: str) -> Response:
     app_id = settings.FACEBOOK_APP_ID
     app_secret = settings.FACEBOOK_APP_SECRET
     redirect_url = settings.FACEBOOK_REDIRECT_URL
-    url = (
-        settings.FACEBOOK_API_URL
-        + "/oauth/access_token?client_id={}&redirect_uri={}&client_secret={}&code={}".format(
-            app_id, redirect_url, app_secret, code
-        )
+    url = settings.FACEBOOK_API_URL + "/oauth/access_token?client_id={}&redirect_uri={}&client_secret={}&code={}".format(
+        app_id, redirect_url, app_secret, code
     )
     res = http_request("get", url)
     return res
@@ -131,9 +123,7 @@ def google_me(access_token: str) -> Response:
     return res
 
 
-def google_login_url(
-    state: str, scope: str = "email profile", api_url: str = "https://accounts.google.com/o/oauth2/v2/auth", **kw
-) -> str:
+def google_login_url(state: str, scope: str = "email profile", api_url: str = "https://accounts.google.com/o/oauth2/v2/auth", **kw) -> str:
     return (
         api_url
         + "?"
@@ -165,9 +155,7 @@ def facebook_login_url(state: str, api_url: str = "https://www.facebook.com/v3.3
     )
 
 
-def account_kit_sms_login_url(
-    state: str, api_url: str = "https://www.accountkit.com/v1.0/basic/dialog/sms_login/", **kw
-) -> str:
+def account_kit_sms_login_url(state: str, api_url: str = "https://www.accountkit.com/v1.0/basic/dialog/sms_login/", **kw) -> str:
     return (
         api_url
         + "?"

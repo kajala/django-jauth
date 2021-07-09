@@ -34,24 +34,18 @@ class AccountKitAuthTokenSerializer(serializers.Serializer):
 
         if not access_token:
             if not code:
-                raise serializers.ValidationError(
-                    _("Unable to log in with provided credentials.") + " (NO_CODE)", code="authorization"
-                )
+                raise serializers.ValidationError(_("Unable to log in with provided credentials.") + " (NO_CODE)", code="authorization")
             request_time = now()
             res = account_kit_get_access_token(code)
             if res.status_code != 200:
-                raise serializers.ValidationError(
-                    _("Unable to log in with provided credentials.") + " (INVALID_OR_USED_CODE)", code="authorization"
-                )
+                raise serializers.ValidationError(_("Unable to log in with provided credentials.") + " (INVALID_OR_USED_CODE)", code="authorization")
             data = res.json()
             access_token = data["access_token"]
             expire_time = request_time + timedelta(seconds=data["token_refresh_interval_sec"])
 
         res = account_kit_me(access_token)
         if res.status_code != 200:
-            raise serializers.ValidationError(
-                _("Unable to log in with provided credentials.") + " (ME)", code="authorization"
-            )
+            raise serializers.ValidationError(_("Unable to log in with provided credentials.") + " (ME)", code="authorization")
         me = res.json()
         ak_user_id = me["id"]
 
@@ -65,9 +59,7 @@ class AccountKitAuthTokenSerializer(serializers.Serializer):
                 fields.append("user")
             ak_user.me = me
             ak_user.save(update_fields=fields)
-            ak_token, created = AccountKitAccessToken.objects.get_or_create(
-                ext_user=ak_user, access_token=access_token, defaults={"expire_time": expire_time}
-            )
+            ak_token, created = AccountKitAccessToken.objects.get_or_create(ext_user=ak_user, access_token=access_token, defaults={"expire_time": expire_time})
             if ak_token.expire_time != expire_time:
                 ak_token.expire_time = expire_time
                 ak_token.save(update_fields=["expire_time"])
@@ -87,24 +79,18 @@ class FacebookAuthTokenSerializer(serializers.Serializer):
 
         if not access_token:
             if not code:
-                raise serializers.ValidationError(
-                    _("Unable to log in with provided credentials.") + " (NO_CODE)", code="authorization"
-                )
+                raise serializers.ValidationError(_("Unable to log in with provided credentials.") + " (NO_CODE)", code="authorization")
             request_time = now()
             res = facebook_get_access_token(code)
             if res.status_code != 200:
-                raise serializers.ValidationError(
-                    _("Unable to log in with provided credentials.") + " (INVALID_OR_USED_CODE)", code="authorization"
-                )
+                raise serializers.ValidationError(_("Unable to log in with provided credentials.") + " (INVALID_OR_USED_CODE)", code="authorization")
             data = res.json()
             access_token = data["access_token"]
             expire_time = request_time + timedelta(seconds=data["expires_in"])
 
         res = facebook_me(access_token)
         if res.status_code != 200:
-            raise serializers.ValidationError(
-                _("Unable to log in with provided credentials.") + " (ME)", code="authorization"
-            )
+            raise serializers.ValidationError(_("Unable to log in with provided credentials.") + " (ME)", code="authorization")
         me = res.json()
         fb_user_id = me["id"]
 
@@ -118,9 +104,7 @@ class FacebookAuthTokenSerializer(serializers.Serializer):
                 fields.append("user")
             fb_user.me = me
             fb_user.save(update_fields=fields)
-            fb_token, created = FacebookAccessToken.objects.get_or_create(
-                ext_user=fb_user, access_token=access_token, defaults={"expire_time": expire_time}
-            )
+            fb_token, created = FacebookAccessToken.objects.get_or_create(ext_user=fb_user, access_token=access_token, defaults={"expire_time": expire_time})
             if fb_token.expire_time != expire_time:
                 fb_token.expire_time = expire_time
                 fb_token.save(update_fields=["expire_time"])
@@ -140,24 +124,18 @@ class GoogleAuthTokenSerializer(serializers.Serializer):
 
         if not access_token:
             if not code:
-                raise serializers.ValidationError(
-                    _("Unable to log in with provided credentials.") + " (NO_CODE)", code="authorization"
-                )
+                raise serializers.ValidationError(_("Unable to log in with provided credentials.") + " (NO_CODE)", code="authorization")
             request_time = now()
             res = google_get_access_token(code)
             if res.status_code != 200:
-                raise serializers.ValidationError(
-                    _("Unable to log in with provided credentials.") + " (INVALID_OR_USED_CODE)", code="authorization"
-                )
+                raise serializers.ValidationError(_("Unable to log in with provided credentials.") + " (INVALID_OR_USED_CODE)", code="authorization")
             data = res.json()
             access_token = data["access_token"]
             expire_time = request_time + timedelta(seconds=data["expires_in"])
 
         res = google_me(access_token)
         if res.status_code != 200:
-            raise serializers.ValidationError(
-                _("Unable to log in with provided credentials.") + " (ME)", code="authorization"
-            )
+            raise serializers.ValidationError(_("Unable to log in with provided credentials.") + " (ME)", code="authorization")
         me = res.json()
         gg_user_id = me["id"]
 
@@ -171,9 +149,7 @@ class GoogleAuthTokenSerializer(serializers.Serializer):
                 fields.append("user")
             gg_user.me = me
             gg_user.save(update_fields=fields)
-            gg_token, created = GoogleAccessToken.objects.get_or_create(
-                ext_user=gg_user, access_token=access_token, defaults={"expire_time": expire_time}
-            )
+            gg_token, created = GoogleAccessToken.objects.get_or_create(ext_user=gg_user, access_token=access_token, defaults={"expire_time": expire_time})
             if gg_token.expire_time != expire_time:
                 gg_token.expire_time = expire_time
                 gg_token.save(update_fields=["expire_time"])

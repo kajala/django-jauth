@@ -14,23 +14,17 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name="accountkituser",
             name="created",
-            field=models.DateTimeField(
-                blank=True, db_index=True, default=django.utils.timezone.now, editable=False, verbose_name="created"
-            ),
+            field=models.DateTimeField(blank=True, db_index=True, default=django.utils.timezone.now, editable=False, verbose_name="created"),
         ),
         migrations.AddField(
             model_name="facebookuser",
             name="created",
-            field=models.DateTimeField(
-                blank=True, db_index=True, default=django.utils.timezone.now, editable=False, verbose_name="created"
-            ),
+            field=models.DateTimeField(blank=True, db_index=True, default=django.utils.timezone.now, editable=False, verbose_name="created"),
         ),
         migrations.AddField(
             model_name="googleuser",
             name="created",
-            field=models.DateTimeField(
-                blank=True, db_index=True, default=django.utils.timezone.now, editable=False, verbose_name="created"
-            ),
+            field=models.DateTimeField(blank=True, db_index=True, default=django.utils.timezone.now, editable=False, verbose_name="created"),
         ),
         migrations.AlterField(
             model_name="accountkituser",

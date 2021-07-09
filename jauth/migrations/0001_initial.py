@@ -44,9 +44,7 @@ class Migration(migrations.Migration):
                 ("expire_time", models.DateTimeField(db_index=True)),
                 (
                     "ext_user",
-                    models.ForeignKey(
-                        on_delete=django.db.models.deletion.CASCADE, related_name="+", to="jauth.GoogleUser"
-                    ),
+                    models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name="+", to="jauth.GoogleUser"),
                 ),
             ],
             options={
@@ -82,9 +80,7 @@ class Migration(migrations.Migration):
                 ("expire_time", models.DateTimeField(db_index=True)),
                 (
                     "ext_user",
-                    models.ForeignKey(
-                        on_delete=django.db.models.deletion.CASCADE, related_name="+", to="jauth.FacebookUser"
-                    ),
+                    models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name="+", to="jauth.FacebookUser"),
                 ),
             ],
             options={
@@ -120,9 +116,7 @@ class Migration(migrations.Migration):
                 ("expire_time", models.DateTimeField(db_index=True)),
                 (
                     "ext_user",
-                    models.ForeignKey(
-                        on_delete=django.db.models.deletion.CASCADE, related_name="+", to="jauth.AccountKitUser"
-                    ),
+                    models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name="+", to="jauth.AccountKitUser"),
                 ),
             ],
             options={

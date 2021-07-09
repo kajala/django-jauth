@@ -21,6 +21,4 @@ class Tests(TestCase):
         self.assertIn("id", data["user"])
         self.assertIn("username", data["user"])
         self.assertIn("email", data["user"])
-        self.assertDictEqual(
-            data["user"], {"id": self.user.id, "email": self.user.email, "username": self.user.username}
-        )
+        self.assertDictEqual(data["user"], {"id": self.user.id, "email": self.user.email, "username": self.user.username})
