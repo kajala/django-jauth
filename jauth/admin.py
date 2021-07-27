@@ -11,21 +11,25 @@ from jauth.models import (
 
 
 class JauthAdminBase(admin.ModelAdmin):
+    pass
+
+
+class AccountKitAdmin(JauthAdminBase):
     raw_id_fields = [
         "user",
     ]
 
 
-class AccountKitAdmin(JauthAdminBase):
-    exclude = ()
-
-
 class FacebookAdmin(JauthAdminBase):
-    exclude = ()
+    raw_id_fields = [
+        "user",
+    ]
 
 
 class GoogleAdmin(JauthAdminBase):
-    exclude = ()
+    raw_id_fields = [
+        "user",
+    ]
 
 
 if hasattr(settings, "ACCOUNT_KIT_APP_ID") and settings.ACCOUNT_KIT_APP_ID:
