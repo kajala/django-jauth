@@ -11,7 +11,9 @@ from jauth.models import (
 
 
 class JauthAdminBase(admin.ModelAdmin):
-    pass
+    raw_id_fields = [
+        "user",
+    ]
 
 
 class AccountKitAdmin(JauthAdminBase):
