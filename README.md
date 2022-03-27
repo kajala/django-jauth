@@ -17,8 +17,6 @@ This is by no means comprehensive OAuth2 package but simple and serves single pu
 
 * Facebook
 
-* AccountKit
-
 * Google
 
 ## Other Features

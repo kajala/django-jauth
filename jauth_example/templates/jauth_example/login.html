@@ -9,14 +9,6 @@
     <div style="color: red">{{ error }}</div>
 {% endif %}
 
-<form method="get" action="https://www.accountkit.com/v1.0/basic/dialog/sms_login/">
-    <input type="hidden" name="app_id" value="{{ account_kit_app_id }}">
-    <input type="hidden" name="redirect" value="{{ account_kit_redirect_url }}">
-    <input type="hidden" name="state" value="{{ uuid }}">
-    <input type="hidden" name="fbAppEventsEnabled" value=true>
-    <button type="submit">Login with Account Kit</button>
-</form>
-
 <form method="get" action="https://www.facebook.com/v3.3/dialog/oauth">
     <input type="hidden" name="client_id" value="{{ facebook_app_id }}">
     <input type="hidden" name="redirect_uri" value="{{ facebook_redirect_url }}">

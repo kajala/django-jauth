@@ -24,30 +24,6 @@ def http_request(method: str, url: str, **kwargs) -> Response:
     return res
 
 
-def account_kit_get_access_token(code: str) -> Response:
-    """
-    GET https://graph.accountkit.com/v1.3/access_token?grant_type=authorization_code&code=<authorization_code>&access_token=AA|<facebook_app_id>|<app_secret>
-    :param code:
-    :return: dict
-    """
-    app_id = settings.ACCOUNT_KIT_APP_ID
-    app_secret = settings.ACCOUNT_KIT_APP_SECRET
-    url = settings.ACCOUNT_KIT_API_URL + "/access_token?grant_type=authorization_code&code={}&access_token=AA|{}|{}".format(code, app_id, app_secret)
-    res = http_request("get", url)
-    return res
-
-
-def account_kit_me(access_token: str) -> Response:
-    """
-    GET https://graph.accountkit.com/v1.3/me/?access_token=<access_token>
-    :param access_token:
-    :return: str
-    """
-    url = settings.ACCOUNT_KIT_API_URL + "/me?access_token={}".format(access_token)
-    res = http_request("get", url)
-    return res
-
-
 def facebook_get_access_token(code: str) -> Response:
     """
     :param code:

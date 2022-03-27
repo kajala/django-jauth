@@ -11,7 +11,6 @@ from rest_framework.views import APIView
 from .helpers import facebook_parse_signed_request
 from .models import FacebookAccessToken, FacebookUser
 from .serializers import (
-    AccountKitAuthTokenSerializer,
     FacebookAuthTokenSerializer,
     GoogleAuthTokenSerializer,
     AuthResultSerializer,
@@ -96,10 +95,6 @@ class FacebookDeleteView(APIView):
         FacebookUser.objects.filter(ext_user_id=user_id).delete()
         logger.info("FacebookDeleteView END ------------------------------")
         return data
-
-
-class AccountKitRedirectView(OAuthRedirectViewBase):
-    serializer_class = AccountKitAuthTokenSerializer  # type: ignore
 
 
 class FacebookRedirectView(OAuthRedirectViewBase):

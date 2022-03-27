@@ -24,16 +24,6 @@ class OAuthAccessToken(models.Model):
         abstract = True
 
 
-class AccountKitUser(OAuthUser):
-    @property
-    def phone(self) -> str:
-        return self.me.get("phone", {}).get("number", "") if self.me else ""
-
-
-class AccountKitAccessToken(OAuthAccessToken):
-    ext_user = models.ForeignKey(AccountKitUser, on_delete=models.CASCADE, related_name="+")
-
-
 class FacebookUser(OAuthUser):
     @property
     def picture_url(self) -> str:

@@ -1,8 +1,6 @@
 from django.conf import settings
 from django.contrib import admin
 from jauth.models import (
-    AccountKitUser,
-    AccountKitAccessToken,
     FacebookAccessToken,
     FacebookUser,
     GoogleUser,
@@ -12,16 +10,6 @@ from jauth.models import (
 
 class JauthAdminBase(admin.ModelAdmin):
     pass
-
-
-class AccountKitAdmin(JauthAdminBase):
-    pass
-
-
-class AccountKitUserAdmin(AccountKitAdmin):
-    raw_id_fields = [
-        "user",
-    ]
 
 
 class FacebookAdmin(JauthAdminBase):
@@ -44,9 +32,6 @@ class GoogleUserAdmin(GoogleAdmin):
     ]
 
 
-if hasattr(settings, "ACCOUNT_KIT_APP_ID") and settings.ACCOUNT_KIT_APP_ID:
-    admin.site.register(AccountKitUser, AccountKitUserAdmin)
-    admin.site.register(AccountKitAccessToken, AccountKitAdmin)
 if hasattr(settings, "FACEBOOK_APP_ID") and settings.FACEBOOK_APP_ID:
     admin.site.register(FacebookUser, FacebookUserAdmin)
     admin.site.register(FacebookAccessToken, FacebookAdmin)
