@@ -21,6 +21,6 @@ setup(
     license="MIT licence, see LICENCE.txt",
     description="Simple OAuth2 login support for Django and Django REST Framework projects",
     long_description=open("README.md").read(),
-    zip_safe=True,
+    zip_safe=False,
     install_requires=install_requires,
 )

@@ -1,7 +1,8 @@
 django-jauth
 ============
 
-Simple OAuth2 authentication client library for Django and Django REST framework projects. Django 3.0 support. Unit test coverage 51%.
+Simple OAuth2 authentication client library for Django and Django REST framework projects. 
+Django 3.0+ support. Unit test coverage 51%.
 
 
 Features
