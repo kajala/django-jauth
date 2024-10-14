@@ -12,7 +12,7 @@ install_requires = parse_requirements("requirements.txt", session=False)
 
 setup(
     name="django-jauth",
-    version="3.6.4",
+    version="3.6.5",
     author="Jani Kajala",
     author_email="kajala@gmail.com",
     packages=["jauth"],
