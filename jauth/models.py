@@ -17,7 +17,7 @@ class OAuthUser(models.Model):
 
 
 class OAuthAccessToken(models.Model):
-    access_token = models.CharField(max_length=255)
+    access_token = models.CharField(max_length=2048)
     expire_time = models.DateTimeField(db_index=True)
 
     class Meta:
