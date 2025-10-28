@@ -26,8 +26,11 @@ classifiers = [
 ]
 
 [tool.setuptools]
-packages = ["jauth"]
 include-package-data = true
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["jauth*"]
 
 [project.urls]
 "Homepage" = "https://github.com/kajala/django-jauth"
